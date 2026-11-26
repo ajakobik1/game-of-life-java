@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.BoardViewController">
+   <VBox alignment="CENTER" layoutY="45.0" prefHeight="474.0" prefWidth="606.0">
+      <children>
+         <!-- Siatka, w której wyświetlana jest plansza -->
+         <GridPane fx:id="boardGrid" alignment="CENTER" prefHeight="533.0" prefWidth="606.0">
+            <padding>
+               <Insets top="100.0" />
+            </padding>
+         </GridPane>
+      </children></VBox>
+   <VBox layoutX="622.0" layoutY="165.0" prefHeight="185.0" prefWidth="240.0">
+      <Label prefHeight="32.0" prefWidth="160.0" text="%s11" />
+      <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="157.0" text="slot 1" onAction="#handleSaveSlot1"/>
+      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="157.0" text="slot 2" onAction="#handleSaveSlot2"/>
+      <Button layoutX="10.0" layoutY="36.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="158.0" text="slot 3" onAction="#handleSaveSlot3"/>
+   </VBox>
+   <VBox layoutX="622.0" layoutY="366.0" prefHeight="185.0" prefWidth="240.0">
+      <Label prefHeight="32.0" prefWidth="160.0" text="%s10" />
+      <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="157.0" text="slot 1" onAction="#handleLoadSlot1"/>
+      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="157.0" text="slot 2" onAction="#handleLoadSlot2"/>
+      <Button layoutX="10.0" layoutY="36.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="158.0" text="slot 3" onAction="#handleLoadSlot3"/>
+   </VBox>
+   <HBox layoutX="125.0" layoutY="16.0" prefHeight="32.0" prefWidth="370.0">
+      <Label prefHeight="25.0" prefWidth="164.0" text="%s12" />
+      <TextField fx:id="boardName" prefHeight="33.0" prefWidth="203.0" />
+   </HBox>
+   <VBox alignment="BOTTOM_CENTER" layoutY="589.0" prefHeight="143.0" prefWidth="606.0">
+      <HBox alignment="BOTTOM_CENTER" prefHeight="274.0" prefWidth="606.0">
+         <padding>
+            <Insets top="20.0"/>
+         </padding>
+         <Button mnemonicParsing="false" onAction="#handleLoad" prefHeight="26.0" prefWidth="118.0" text="%s7">
+            <HBox.margin>
+               <Insets bottom="15.0" right="10.0"/>
+            </HBox.margin>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#handleSave" prefHeight="26.0" prefWidth="129.0" text="%s8">
+            <HBox.margin>
+               <Insets bottom="15.0" left="10.0"/>
+            </HBox.margin>
+         </Button>
+      </HBox>
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleDoStep" text="%s9" textAlignment="CENTER"
+              VBox.vgrow="NEVER">
+         <VBox.margin>
+            <Insets bottom="40.0" top="10.0"/>
+         </VBox.margin>
+      </Button>
+   </VBox>
+</AnchorPane>

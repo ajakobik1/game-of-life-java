@@ -1,0 +1,18 @@
+# psql --dbname=gol --username=postgres
+
+services:
+  pgadmin:
+    image: dpage/pgadmin4:8.12
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "251497@edu.p.lodz.pl"
+      PGADMIN_DEFAULT_PASSWORD: "jakieshaslo"
+    ports:
+      - "80:80"
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: gol
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: jakieshaslo
+    ports:
+      - "5432:5432"

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Konsola - dla logów debug (i wyższych), ale bez zapisu do pliku -->
+
+        <Console name="DebugConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+            <Filters>
+                <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="FATAL" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+            </Filters>
+        </Console>
+
+        <Console name="ErrorConsole" target="SYSTEM_ERR">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+            <Filters>
+                <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </Console>
+
+        <!-- Plik logów - zapisuje tylko logi ERROR -->
+        <RollingFile name="ErrorFile"
+                     fileName="logs/app.log"
+                     filePattern="logs/app-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </PatternLayout>
+            <Filters>
+                <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <logger name="org.example" level="DEBUG" additivity="false">
+            <AppenderRef ref="ErrorConsole"/>
+            <AppenderRef ref="ErrorFile"/>
+            <AppenderRef ref="DebugConsole"/>
+        </logger>
+
+        <!-- Logger domyślny -->
+        <Root level="OFF"/>
+    </Loggers>
+</Configuration>
